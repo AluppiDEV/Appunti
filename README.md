@@ -1,11 +1,11 @@
-## 📝Appunti
+# 📝Appunti
 
 ---
 
-## Storia
+# Storia
 
-# [Indice degli argomenti](Storia/index.md)
+## [Indice degli argomenti](Storia/index.md)
 
 Argomenti svolti
 
-- [Monarchia francese](Storia/MonarchiaFrancese.md)
+- [Monarchia francese](Storia/Doc/MonarchiaFrancese.md)
