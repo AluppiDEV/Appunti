@@ -69,8 +69,33 @@ Il Barocco non fu soltanto un periodo artistico, ma anche una fase di **profonda
 
 ---
 
-## Video
+# 📹 Video: Romano Luperini
 
-### Gian battista marino
+## ✒️ Concetti Chiave di Giovan Battista Marino
 
-La vera regola è saper rompere le regole.
+### Poetica
+- La vera regola è **saper rompere le regole**.  
+- Il fine del poeta è **stupire**, suscitare meraviglia.  
+
+### Stile e Temi
+- Predilige argomenti **audaci**.  
+- Si basa su due concetti fondamentali:  
+
+  - **Acutezza** → capacità di guardare in modo critico la realtà e valutarla.  
+  - **Ingegno** → saper trovare soluzioni considerate sbagliate dai classicisti.  
+
+---
+
+## 🎭 Il Contesto Barocco
+- Grande attenzione al **pubblico/lettore**, per trasmettere il testo come si desidera.  
+- È definita come **epoca della disarmonia**.  
+- Il Barocco ama gli effetti spettacolari → tende a impressionare le masse.  
+- Mostra un’inclinazione verso un’**arte di massa**.  
+
+---
+
+## 🔗 Connessioni tra Barocco e Postmodernismo
+Aspetti che collegano Barocco e Postmodernismo:  
+- **Relativismo**  
+- **Incitazionismo / Intertestualità** → Marino sostiene che si debba *“saccheggiare”* altri testi tramite la tecnica della riscrittura.  
+
