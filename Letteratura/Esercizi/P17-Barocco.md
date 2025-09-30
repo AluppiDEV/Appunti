@@ -1,5 +1,5 @@
 ---
-[🔙 Torna all'indice](../Doc/Barocco.md)
+[🔙 Go back](../Doc/Barocco.md)
 ---
 
 ## 1. Definizione e Contesto del Barocco

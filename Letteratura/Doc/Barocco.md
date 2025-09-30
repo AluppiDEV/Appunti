@@ -72,4 +72,4 @@ Alcuni aspetti del Barocco anticipano il Postmodernismo:
 
 ## 📹 Video: Romano Luperini
 (approfondimento sulla poetica di Marino e sul Barocco letterario)  
-[Vedi approfondimento](../Esercizi/Barocco_p17.md)
+[Vedi approfondimento](../Esercizi/P17-Barocco.md)
