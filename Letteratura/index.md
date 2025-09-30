@@ -14,6 +14,6 @@ Questo macro-argomento affronta le caratteristiche del Manierismo, il contesto s
 ## II. Il Barocco 🎭
 
 Questo macro-argomento analizza il Barocco nelle sue varie sfaccettature: letteratura, arte, musica, filosofia e legami con la Rivoluzione scientifica.  
-## [Barocco](Doc/Barocco.md)
+## [Barocco](Doc/Barocc.md)
 
 ---
