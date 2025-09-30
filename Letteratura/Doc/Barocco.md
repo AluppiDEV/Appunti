@@ -66,3 +66,11 @@ Il Barocco non fu soltanto un periodo artistico, ma anche una fase di **profonda
 - Nell’arte, cercò di stupire ed emozionare lo spettatore con teatralità e dinamismo.
 - Nella scienza, introdusse un nuovo metodo basato sull’**osservazione, la sperimentazione e l’uso degli strumenti**, che aprì la strada alla modernità.
 - Sul piano culturale, la scoperta di civiltà come quella cinese mise in discussione le narrazioni tradizionali, aprendo la mente a una visione più ampia e critica della storia dell’umanità.
+
+---
+
+## Video
+
+### Gian battista marino
+
+La vera regola è saper rompere le regole.
