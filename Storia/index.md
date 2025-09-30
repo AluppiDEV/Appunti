@@ -1,3 +1,8 @@
+---
+
+[🔙 Torna all'indice](../README.md)
+
+---
 # 📚 Indice Generale della Storia
 
 Questo indice è progettato per organizzare tutti gli argomenti, utilizzando i file Markdown associati per il contenuto.

@@ -2,11 +2,22 @@
 
 ---
 
+Questa repo vuole raccogliere gli apputni **suddivisi per materia** per facilitare lo **studio** e il **ripasso**.
+
+---
+
 # Storia
 
-## [Indice degli argomenti](Storia/index.md)
+## [Esplora](Storia/index.md)
 
+---
 
 # Letteratura 
 
-## [Indice degli argomenti](Letteratura/index.md)
+## [Esplora](Letteratura/index.md)
+
+---
+
+# TEPSIT 
+
+## [Esplora](Letteratura/index.md)

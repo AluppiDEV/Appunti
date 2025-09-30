@@ -1,3 +1,7 @@
+---
+[🔙 Torna all'indice](../index.md)
+---
+
 # Regno di Luigi XIV (Re Sole)
 
 Rappresenta il culmine dell'**Assolutismo** in Francia, un processo avviato da monarchi precedenti (come Enrico IV nel tardo '500, con l'Editto di Nantes del 1598, e rafforzato da ministri come Richelieu e Mazzarino nel '600). La sua celebre frase, **"L'état, c'est moi!"** ("Lo Stato sono io!"), sintetizza la sua concezione di un **potere illimitato, di origine divina** (Monarchia Teocratica). Per eliminare ogni opposizione, Luigi XIV:
