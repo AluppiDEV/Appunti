@@ -9,9 +9,9 @@ Questo indice è progettato per organizzare tutti gli argomenti, utilizzando i f
 
 ---
 
-## I. L'Assolutismo e la Monarchia Francese 🇫🇷
+## I. L'Assolutismo di LuigiXIV 🇫🇷
 
 Questo macro-argomento copre l'ascesa e l'apogeo del potere monarchico in Francia, con Luigi XIV come caso studio principale.
-# [Monarchia Francese](Doc/MonarchiaFrancese.md)
+# [LuigiXIV](Doc/LuigiXIV.md)
 
 ---
