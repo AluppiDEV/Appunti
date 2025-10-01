@@ -1,4 +1,5 @@
 ## [🔙 Torna all'indice](../index.md)
+---
 
 # Il Regno di Luigi XIV (Re Sole)
 
