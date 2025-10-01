@@ -53,6 +53,7 @@ Il **Colbertismo** è la versione francese del **Mercantilismo**, secondo cui la
 
 - Trascurò il settore agricolo.
 - Non riuscì a superare la supremazia marittima e commerciale di Olanda e Inghilterra.
+- Tentò l'espansione verso il territorio Germanico ma venne bloccata la sua avanzata dall'alleanza dell'Ingilterra e delle Provincie unite. [Approfondimento](../Approfondimento/FranciaBelgio.md)
 - Le enormi spese militari assorbirono gran parte delle entrate, portando spesso le finanze statali in **deficit**.
 
 ---
