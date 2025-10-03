@@ -2,7 +2,7 @@
 [🔙 Torna all'indice](../README.md)
 ---
 
-# 💻 Indice Generale di TEPSIT
+# 💻 Indice Generale di Sistemi
 
 Questo indice è progettato per organizzare tutti gli argomenti, utilizzando i file Markdown associati per il contenuto.
 
