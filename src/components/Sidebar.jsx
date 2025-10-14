@@ -7,32 +7,18 @@ import { ChevronRight, Folder, FolderOpen, FileText } from "lucide-react";
 // OPZIONE 1: Vite - import.meta.glob
 const allNotes = import.meta.glob("/public/notes/**/*.md", { as: "url" });
 
-// Funzione ricorsiva per costruire la gerarchia delle cartelle
-// PARTE DIRETTAMENTE DA /notes/, escludendo tutto il resto
+// 🔧 Costruisce la struttura gerarchica delle cartelle
 function buildTree(paths) {
   const tree = {};
-
   for (const path of paths) {
-    // Salta i file che non sono dentro /notes/
     if (!path.startsWith("/notes/")) continue;
-
-    // Rimuove /notes/ e divide in parti
     const parts = path.replace(/^\/notes\//, "").split("/");
-
-    // Salta se il file è direttamente in /notes/ senza sottocartelle
-    if (parts.length === 1 && parts[0].endsWith(".md")) {
-      // Se vuoi includere anche i file nella root di notes, decommenta:
-      // const fileName = parts[0];
-      // tree[fileName] = { path, type: 'file' };
-      continue;
-    }
+    if (parts.length === 1 && parts[0].endsWith(".md")) continue;
 
     let current = tree;
-
     for (let i = 0; i < parts.length; i++) {
       const part = parts[i];
       const isFile = part.endsWith(".md");
-
       if (isFile) {
         current[part] = { path, type: "file" };
       } else {
@@ -43,17 +29,19 @@ function buildTree(paths) {
       }
     }
   }
-
   return tree;
 }
 
-// Componente per i file
-function FileItem({ name, path, selected, onSelect }) {
+// 🔹 File singolo
+function FileItem({ name, path, selected, onSelect, closeSidebar }) {
   const isSelected = selected === path;
 
   return (
     <button
-      onClick={() => onSelect(path)}
+      onClick={() => {
+        onSelect(path);
+        if (closeSidebar) closeSidebar(false); // 👈 chiude menu mobile
+      }}
       className={`w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-all duration-200 group ${
         isSelected
           ? "bg-amber-400 text-gray-900 font-semibold shadow-lg shadow-amber-400/20"
@@ -70,16 +58,17 @@ function FileItem({ name, path, selected, onSelect }) {
   );
 }
 
-// Componente per le cartelle
-function FolderItem({ name, children, selected, onSelect, level = 0 }) {
+// 🔹 Cartella con toggle
+function FolderItem({
+  name,
+  children,
+  selected,
+  onSelect,
+  level = 0,
+  closeSidebar,
+}) {
   const [isOpen, setIsOpen] = useState(false);
-
-  // Funzione ricorsiva per aprire tutte le sottocartelle
-  const toggleFolder = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const hasChildren = Object.keys(children).length > 0;
+  const toggleFolder = () => setIsOpen(!isOpen);
 
   return (
     <div className="space-y-1">
@@ -110,20 +99,28 @@ function FolderItem({ name, children, selected, onSelect, level = 0 }) {
         }`}
       >
         <div className="ml-4 pl-3 border-l-2 border-gray-700/50 space-y-1 mt-1">
-          {renderTreeRecursive(children, selected, onSelect, level + 1, isOpen)}
+          {renderTreeRecursive(
+            children,
+            selected,
+            onSelect,
+            level + 1,
+            isOpen,
+            closeSidebar
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-// Render ricorsivo della struttura con apertura automatica delle sottocartelle
+// 🔁 Ricorsione struttura cartelle
 function renderTreeRecursive(
   node,
   selected,
   onSelect,
   level = 0,
-  parentOpen = true
+  parentOpen = true,
+  closeSidebar
 ) {
   return Object.entries(node).map(([key, value]) => {
     if (value.type === "file") {
@@ -134,6 +131,7 @@ function renderTreeRecursive(
           path={value.path}
           selected={selected}
           onSelect={onSelect}
+          closeSidebar={closeSidebar}
         />
       );
     } else {
@@ -145,19 +143,21 @@ function renderTreeRecursive(
           selected={selected}
           onSelect={onSelect}
           level={level}
+          closeSidebar={closeSidebar}
         />
       );
     }
   });
 }
 
+// 🌟 Componente principale
 export default function Sidebar({ selected, onSelect }) {
   const [tree, setTree] = useState({});
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [isOpen, setIsOpen] = useState(false); // 👈 controllo apertura mobile
 
   useEffect(() => {
-    // Gestione autenticazione
     const unsubscribe = onAuthStateChanged(auth, (u) => setUser(u));
     return unsubscribe;
   }, []);
@@ -174,49 +174,72 @@ export default function Sidebar({ selected, onSelect }) {
   }, []);
 
   return (
-    <aside className="w-72 bg-gray-900 border-r border-gray-800 p-4 flex flex-col justify-between h-full">
-      <div>
-        {/* Header */}
-        <div className="mb-6">
-          <h3 className="text-xl font-bold text-amber-400 mb-1 flex items-center gap-2">
-            <Folder className="w-5 h-5" />
-            Appunti
-          </h3>
-          <div className="h-1 w-12 bg-gradient-to-r from-amber-400 to-transparent rounded-full" />
+    <>
+      {/* 🔘 Bottone menu mobile */}
+      <button
+        className="md:hidden fixed top-4 left-4 z-50 bg-gray-900 text-amber-400 p-2 rounded-lg shadow-lg border border-gray-800"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? "✕" : "☰"}
+      </button>
+
+      {/* 📁 Sidebar */}
+      <aside
+        className={`fixed md:static top-0 left-0 h-full w-72 bg-gray-900 border-r border-gray-800 p-4 flex flex-col justify-between transform transition-transform duration-300 z-40
+        ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
+      >
+        <div>
+          {/* Header */}
+          <div className="mb-6">
+            <h3 className="text-xl font-bold text-amber-400 mb-1 flex items-center gap-2">
+              <Folder className="w-5 h-5" />
+              Appunti
+            </h3>
+            <div className="h-1 w-12 bg-gradient-to-r from-amber-400 to-transparent rounded-full" />
+          </div>
+
+          {/* File e Cartelle */}
+          {loading ? (
+            <div className="flex items-center gap-2 text-gray-400 text-sm animate-pulse">
+              <div className="w-4 h-4 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />
+              <span>Caricamento...</span>
+            </div>
+          ) : (
+            <div className="space-y-1 overflow-y-auto max-h-[calc(100vh-200px)]">
+              {renderTreeRecursive(
+                tree,
+                selected,
+                onSelect,
+                0,
+                true,
+                setIsOpen
+              )}
+            </div>
+          )}
         </div>
 
-        {/* File / Cartelle */}
-        {loading ? (
-          <div className="flex items-center gap-2 text-gray-400 text-sm animate-pulse">
-            <div className="w-4 h-4 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />
-            <span>Caricamento...</span>
-          </div>
-        ) : (
-          <div className="space-y-1 overflow-y-auto max-h-[calc(100vh-200px)]">
-            {renderTreeRecursive(tree, selected, onSelect)}
-          </div>
-        )}
-      </div>
-
-      {/* Footer con Login / User info */}
-      <div className="mt-4">
-        {user ? (
-          <div className="flex flex-col gap-2 items-start">
-            <p className="text-sm text-gray-300">
-              Loggato come{" "}
-              <span className="font-semibold text-amber-400">{user.email}</span>
-            </p>
-            <button
-              className="px-3 py-1 text-sm bg-red-500 rounded hover:bg-red-600"
-              onClick={() => auth.signOut()}
-            >
-              Logout
-            </button>
-          </div>
-        ) : (
-          <Login />
-        )}
-      </div>
-    </aside>
+        {/* Footer: login / utente */}
+        <div className="mt-4">
+          {user ? (
+            <div className="flex flex-col gap-2 items-start">
+              <p className="text-sm text-gray-300">
+                Loggato come{" "}
+                <span className="font-semibold text-amber-400">
+                  {user.email}
+                </span>
+              </p>
+              <button
+                className="px-3 py-1 text-sm bg-red-500 rounded hover:bg-red-600"
+                onClick={() => auth.signOut()}
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Login />
+          )}
+        </div>
+      </aside>
+    </>
   );
 }
