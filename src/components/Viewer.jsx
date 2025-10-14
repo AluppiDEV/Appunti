@@ -3,26 +3,37 @@ import ReactMarkdown from "react-markdown";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
-export default function Viewer({ fileName, onEdit, user }) {
+export default function Viewer({ fileName, onEdit, user, lastUpdate }) {
   const [content, setContent] = useState("Caricamento...");
 
   useEffect(() => {
     let mounted = true;
     async function load() {
-      const id = fileName.split("/").pop().replace(".md", "");
+      const id = fileName
+        .replace(/^\/notes\//, "")
+        .replace(".md", "")
+        .replace(/\//g, "_");
       const ref = doc(db, "notes", id);
-      const snap = await getDoc(ref);
-      if (snap.exists()) {
-        if (mounted) setContent(snap.data().content);
-        return;
+
+      try {
+        const snap = await getDoc(ref);
+        if (snap.exists() && mounted) setContent(snap.data().content);
+      } catch (error) {
+        console.error("Errore caricamento da Firestore:", error);
       }
-      const resp = await fetch(fileName);
-      const text = await resp.text();
-      if (mounted) setContent(text);
+
+      try {
+        const resp = await fetch(fileName);
+        if (resp.ok && mounted) setContent(await resp.text());
+        else if (mounted) setContent("⚠️ File non trovato");
+      } catch (error) {
+        console.error("Errore caricamento file:", error);
+        if (mounted) setContent("⚠️ Errore nel caricamento");
+      }
     }
     load();
     return () => (mounted = false);
-  }, [fileName]);
+  }, [fileName, lastUpdate]); // ora corretto
 
   return (
     <div className="max-w-3xl mx-auto">
