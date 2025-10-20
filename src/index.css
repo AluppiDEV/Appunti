@@ -8,3 +8,35 @@ body {
   @apply bg-gray-950 text-gray-100;
   font-family: system-ui, sans-serif;
 }
+
+/* --- SCROLLBAR PERSONALIZZATA (TEMA GIALLO) --- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Sfondo del canale */
+::-webkit-scrollbar-track {
+  background: #1a1a1a; /* scuro per contrasto */
+  border-radius: 8px;
+}
+
+/* Maniglia (thumb) */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffb900, #ffcc33);
+  border-radius: 8px;
+  border: 2px solid #1a1a1a;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover: più luminoso + leggera espansione */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ffd24d, #ffb900);
+  transform: scaleX(1.1);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ffb900 #1a1a1a;
+}

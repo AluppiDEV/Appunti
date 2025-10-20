@@ -109,7 +109,7 @@ export default function Editor({ fileName, onClose, user }) {
           value={text}
           onChange={(e) => setText(e.target.value)}
           disabled={loading}
-          className="w-full h-200 p-3 bg-gray-800 text-gray-100 rounded resize-none font-mono text-sm focus:outline-none focus:ring focus:ring-amber-400/50 disabled:opacity-50"
+          className="w-full h-150 p-3 bg-gray-800 text-gray-100 rounded resize-none font-mono text-sm focus:outline-none focus:ring focus:ring-amber-400/50 disabled:opacity-50"
           placeholder={loading ? "Caricamento..." : "Scrivi qui..."}
         />
       </div>

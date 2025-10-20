@@ -219,7 +219,7 @@ export default function Sidebar({ selected, onSelect }) {
         </div>
 
         {/* Footer: login / utente */}
-        <div className="mt-4">
+        <div className="relative mt-4">
           {user ? (
             <div className="flex flex-col gap-2 items-start">
               <p className="text-sm text-gray-300">

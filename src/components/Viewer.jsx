@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm"; // <--- aggiungi questo
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -36,7 +37,6 @@ export default function Viewer({ fileName, onEdit, user, lastUpdate }) {
         let resp = await fetch(fileName);
         let text = await resp.text();
 
-        // 👇 Se il contenuto contiene <html>, vuol dire che è index.html → file mancante
         if (!resp.ok || text.includes("<html")) {
           console.warn("File non trovato, caricamento welcome.md...");
           resp = await fetch("/notes/welcome.md");
@@ -46,7 +46,11 @@ export default function Viewer({ fileName, onEdit, user, lastUpdate }) {
 
         if (mounted) {
           setContent(text);
-          setTitle(loadedFromDefault ? "Welcome" : fileName.split("/").pop().replace(".md", ""));
+          setTitle(
+            loadedFromDefault
+              ? "Welcome"
+              : fileName.split("/").pop().replace(".md", "")
+          );
         }
       } catch (error) {
         console.error("Errore caricamento file:", error);
@@ -77,8 +81,31 @@ export default function Viewer({ fileName, onEdit, user, lastUpdate }) {
         )}
       </div>
 
-      <article className="prose prose-invert prose-amber max-w-none">
-        <ReactMarkdown>{content}</ReactMarkdown>
+      <article className="prose prose-invert prose-amber max-w-none whitespace-pre-wrap">
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          breaks={true} // <--- mantiene i ritorni a capo!
+          components={{
+            strong: ({ node, ...props }) => (
+              <strong
+                {...props}
+                style={{
+                  color: "#ffb900",
+                  fontWeight: "bold",
+                  textShadow: "0 0 6px rgba(255, 185, 0, 0.5)",
+                }}
+              />
+            ),
+            h1: ({ node, ...props }) => (
+              <h1
+                {...props}
+                style={{ color: "#ffb900", borderBottom: "2px solid #ffb900" }}
+              />
+            ),
+          }}
+        >
+          {content}
+        </ReactMarkdown>
       </article>
     </div>
   );
