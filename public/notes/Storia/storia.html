@@ -1,87 +1,144 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Indice Generale della Storia</title>
-    <link rel="stylesheet" href="../../style/style.css" />
-  </head>
-  <body>
-    <div class="viewer-content">
-      <header>
-        <h1>📚 Indice Generale della Storia</h1>
-        <p>
-          Questo indice è progettato per organizzare tutti gli argomenti,
-          utilizzando i file Markdown associati per il contenuto.
-        </p>
 
-        <hr />
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-dark text-light">
+    <div class="container py-5">
+      <!-- HEADER -->
+      <header class="text-center mb-5">
+        <h1 class="text-warning fw-bold mb-3">
+          📚 Indice Generale della Storia
+        </h1>
+        <p class="text-secondary">
+          Organizzazione dei principali argomenti storici. Ogni sezione apre la
+          relativa lezione in formato HTML.
+        </p>
       </header>
 
-      <main>
-        <div class="section">
-          <h2>I.I. L'Assolutismo di Luigi XIV 🇫🇷</h2>
-          <p>
-            Questo macro-argomento copre l'ascesa e l'apogeo del potere
-            monarchico in Francia, con Luigi XIV come caso studio principale.
-          </p>
-          <a
-            class="doc-link"
-            href="Doc/Capitolo 1/LuigiXIV.html"
-            target="viewerFrame"
-            >📄 Apri: Luigi XIV</a
-          >
-        </div>
+      <!-- MAIN -->
+      <main class="mx-auto" style="max-width: 900px">
+        <!-- Luigi XIV -->
+        <section class="mb-4">
+          <div class="card bg-dark border-light rounded-4 shadow-lg">
+            <div class="card-body">
+              <h4 class="text-info">I.I. L'Assolutismo di Luigi XIV 🇫🇷</h4>
+              <p>
+                Analisi dell’ascesa e dell’apogeo del potere monarchico in
+                Francia, con <strong>Luigi XIV</strong> come caso studio
+                principale.
+              </p>
+              <a
+                href="Doc/Capitolo 1/LuigiXIV.html"
+                class="btn btn-outline-info fw-semibold"
+                target="viewerFrame"
+              >
+                📄 Apri: Luigi XIV
+              </a>
+            </div>
+          </div>
+        </section>
 
-        <hr />
+        <!-- Pietro il Grande -->
+        <section class="mb-4">
+          <div class="card bg-dark border-light rounded-4 shadow-lg">
+            <div class="card-body">
+              <h4 class="text-warning">
+                I.II. L'Assolutismo di Pietro il Grande 🇷🇺
+              </h4>
+              <p>
+                Studio del processo di
+                <strong>modernizzazione e centralizzazione</strong> della Russia
+                sotto Pietro il Grande, con attenzione ai viaggi in Europa, alle
+                riforme interne e alla fondazione di
+                <strong>San Pietroburgo</strong>.
+              </p>
+              <a
+                href="Doc/Capitolo 1/PietroBIG.html"
+                class="btn btn-outline-warning fw-semibold"
+                target="viewerFrame"
+              >
+                📄 Apri: Pietro il Grande
+              </a>
+            </div>
+          </div>
+        </section>
 
-        <div class="section">
-          <h2>I.II. L'Assolutismo di Pietro il Grande 🇷🇺</h2>
-          <p>
-            Questo macro-argomento riguarda il processo di modernizzazione e
-            centralizzazione della Russia sotto Pietro il Grande, con
-            particolare attenzione ai suoi viaggi in Europa, alle riforme
-            interne e alla fondazione di San Pietroburgo.
-          </p>
-          <a
-            class="doc-link"
-            href="Doc/Capitolo 1/PietroBIG.html"
-            target="viewerFrame"
-            >📄 Apri: Pietro il Grande</a
-          >
-        </div>
+        <!-- Governo Inglese -->
+        <section class="mb-4">
+          <div class="card bg-dark border-light rounded-4 shadow-lg">
+            <div class="card-body">
+              <h4 class="text-success">I.III. Il Governo Inglese 🇬🇧</h4>
+              <p>
+                Analisi del sistema politico inglese tra XVII e XVIII secolo,
+                con focus sul <strong>bilanciamento dei poteri</strong> tra
+                monarchia e Parlamento, la
+                <strong>Gloriosa Rivoluzione</strong> e la nascita della
+                monarchia costituzionale.
+              </p>
+              <a
+                href="Doc/Capitolo 1/GovernoInglese.html"
+                class="btn btn-outline-success fw-semibold"
+                target="viewerFrame"
+              >
+                📄 Apri: Governo Inglese
+              </a>
+            </div>
+          </div>
+        </section>
 
-        <hr />
+        <!-- Capitolo 2 -->
+        <section class="mb-4">
+          <div class="card bg-dark border-light rounded-4 shadow-lg">
+            <div class="card-body">
+              <h4 class="text-primary">II.I. Riassunto Generale</h4>
+              <p>
+                Breve riepilogo dei contenuti principali del
+                <strong>Capitolo 2</strong>.
+              </p>
+              <a
+                href="Doc/Capitolo2.html"
+                class="btn btn-outline-primary fw-semibold"
+                target="viewerFrame"
+              >
+                📄 Apri: Capitolo 2
+              </a>
+            </div>
+          </div>
+        </section>
 
-        <div class="section">
-          <h2>I.III. Il Governo Inglese 🇬🇧</h2>
-          <p>
-            Questo macro-argomento analizza il sistema politico inglese tra il
-            XVII e il XVIII secolo, evidenziando il
-            <strong>bilanciamento dei poteri</strong> tra monarchia e
-            Parlamento, le guerre civili, la Gloriosa Rivoluzione e la nascita
-            della <strong>monarchia costituzionale</strong>.
-          </p>
-          <a
-            class="doc-link"
-            href="Doc/Capitolo 1/GovernoInglese.html"
-            target="viewerFrame"
-            >📄 Apri: Governo Inglese</a
-          >
-        </div>
-
-        <hr />
-
-        <div class="section">
-          <h2>II.I. Riassunto generale</h2>
-          <p>Breve riepilogo dei contenuti principali del Capitolo 2.</p>
-          <a class="doc-link" href="Doc/Capitolo2.html" target="viewerFrame">
-            📄 Apri: Capitolo 2
-          </a>
-        </div>
-
-        <hr />
+        <!-- Capitolo 3 -->
+        <section class="mb-4">
+          <div class="card bg-dark border-light rounded-4 shadow-lg">
+            <div class="card-body">
+              <h4 class="text-primary">III.I. Illuminismo</h4>
+              <p>
+                Analisi della corrente di pensiero
+                <strong>dell'illuminismo </strong>.
+              </p>
+              <a
+                href="Doc/Capitolo 3/Illuminsmo.html"
+                class="btn btn-outline-primary fw-semibold"
+                target="viewerFrame"
+              >
+                📄 Apri: Illuminismo
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
