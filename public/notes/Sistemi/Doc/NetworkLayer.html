@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strato di Rete e Datalink</title>
+    <link rel="stylesheet" href="../../../style/style.css" />
+  </head>
+  <body>
+    <div class="viewer-content">
+      <header>
+        <h1>🌐 Strato di Rete e Strato Datalink</h1>
+        <p>
+          Differenze, funzioni e modalità di comunicazione tra i livelli del
+          modello OSI dedicati al trasferimento dei dati tra nodi e reti.
+        </p>
+      </header>
+
+      <main>
+        <section>
+          <h2>1. Differenze tra Datalink e Network</h2>
+          <p>
+            Lo <strong>strato Datalink</strong> si occupa della comunicazione
+            tra <strong>due nodi adiacenti</strong> nella stessa rete locale.
+          </p>
+          <p>
+            Lo <strong>strato Network</strong> invece gestisce la
+            <strong>trasmissione end-to-end</strong> di pacchetti (PDU di rete)
+            dal <strong>mittente</strong> al
+            <strong>destinatario finale</strong>, attraversando più reti.
+          </p>
+
+          <h3>Dispositivi principali</h3>
+          <ul>
+            <li><strong>Livello 2 (Datalink):</strong> Switch o Bridge</li>
+            <li><strong>Livello 3 (Network):</strong> Router</li>
+          </ul>
+
+          <h3>Indirizzamento</h3>
+          <ul>
+            <li><strong>Datalink:</strong> Indirizzo MAC</li>
+            <li><strong>Network:</strong> Indirizzo IP</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>2. Funzioni del Router</h2>
+          <ul>
+            <li>Instrada i pacchetti sul percorso corretto.</li>
+            <li>Collega due o più reti diverse tra loro.</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>3. Funzioni dello Strato di Rete</h2>
+          <h3>🔹 Comunicazione (Switching)</h3>
+          <p>
+            Definisce la modalità con cui il messaggio viene inviato dal nodo
+            sorgente al nodo destinatario:
+          </p>
+          <ul>
+            <li>
+              <strong>Packet Switching:</strong> i dati vengono suddivisi in
+              pacchetti indipendenti.
+            </li>
+            <li>
+              <strong>Circuit Switching:</strong> viene stabilito un circuito
+              dedicato per la comunicazione.
+            </li>
+          </ul>
+
+          <h3>🔹 Instradamento (Routing)</h3>
+          <p>
+            Seleziona il <strong>percorso migliore</strong> per l’invio dei
+            pacchetti, utilizzando specifici
+            <strong>algoritmi di routing</strong>.
+          </p>
+
+          <h3>🔹 Internetworking</h3>
+          <p>
+            Gestisce la <strong>comunicazione tra reti fisiche diverse</strong>,
+            permettendo la connessione tra tecnologie eterogenee (es. Ethernet,
+            Wi-Fi, WAN).
+          </p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>4. Tipologie di Servizi offerti dallo Strato di Rete</h2>
+
+          <h3>🔸 Servizio Connection-Oriented</h3>
+          <p>
+            Simile a una rete telefonica analogica. Prima della trasmissione,
+            viene stabilita una connessione tra mittente e destinatario.
+          </p>
+          <ul>
+            <li>Affidabile</li>
+            <li>Garantisce qualità del servizio (<strong>QoS</strong>)</li>
+            <li>Richiede attesa per l’instaurazione della connessione</li>
+          </ul>
+
+          <h3>🔸 Servizio Connectionless</h3>
+          <p>
+            Tipico della rete Internet. Ogni pacchetto viene inviato
+            indipendentemente dagli altri.
+          </p>
+          <ul>
+            <li>Inaffidabile (nessuna garanzia di consegna o ordine)</li>
+            <li>Nessun controllo di flusso</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>5. Reti Connectionless – Datagram Network</h2>
+          <p>
+            In una <strong>Datagram Network</strong>, i pacchetti (detti
+            <strong>datagrammi</strong>) vengono inseriti nella rete e
+            instradati individualmente.
+          </p>
+          <ul>
+            <li>
+              Ogni pacchetto contiene l’indirizzo della destinazione finale.
+            </li>
+            <li>I pacchetti possono seguire percorsi diversi.</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>6. Reti Connection-Oriented – Virtual Circuit Network</h2>
+          <p>
+            In una <strong>Virtual Circuit Network</strong>, la comunicazione
+            avviene attraverso una connessione logica temporanea chiamata
+            <strong>circuito virtuale</strong>.
+          </p>
+
+          <h3>Fasi del servizio</h3>
+          <ol>
+            <li>
+              <strong>Connection Setup:</strong> viene stabilito un percorso
+              logico tra mittente e destinatario e riservate le risorse
+              necessarie.
+            </li>
+            <li>
+              <strong>Trasmissione:</strong> i pacchetti viaggiano in ordine
+              lungo il circuito stabilito.
+            </li>
+            <li>
+              <strong>Connection Release:</strong> la connessione viene
+              rilasciata al termine della trasmissione.
+            </li>
+          </ol>
+
+          <h3>Caratteristiche</h3>
+          <ul>
+            <li>
+              Ogni pacchetto è etichettato con un numero di circuito virtuale
+              (<strong>VC – Virtual Circuit</strong>) valido localmente.
+            </li>
+            <li>
+              Ogni router mantiene una <strong>tabella di commutazione</strong>
+              che associa il numero del VC in ingresso con l’uscita corretta.
+            </li>
+            <li>
+              Tutti i pacchetti seguono lo stesso percorso logico, garantendo
+              ordine e coerenza.
+            </li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>7. Tecniche di Commutazione ⚡</h2>
+          <p>
+            Le <strong>tecniche di commutazione</strong> definiscono il modo in
+            cui i dati vengono trasmessi attraverso la rete. Esse riguardano la
+            parte <em>fisica e infrastrutturale</em> della comunicazione, mentre
+            le tipologie di servizio (connectionless o connection-oriented)
+            descrivono l’aspetto logico del collegamento tra mittente e
+            destinatario.
+          </p>
+
+          <h3>🔹 Commutazione di Circuito</h3>
+          <p>
+            Viene stabilita una <strong>connessione dedicata end-to-end</strong>
+            tra mittente e destinatario. Tutte le risorse necessarie alla
+            comunicazione sono riservate in anticipo.
+          </p>
+          <ul>
+            <li>Alta affidabilità e qualità del servizio (QoS garantita).</li>
+            <li>Assenza di congestione durante la connessione.</li>
+          </ul>
+
+          <h4>Contro</h4>
+          <ul>
+            <li>
+              Possibile <strong>spreco di risorse</strong> se non vi è scambio
+              continuo di dati.
+            </li>
+            <li>
+              <strong>Attesa</strong> prima della connessione e
+              <strong>sensibilità ai guasti</strong>.
+            </li>
+            <li>
+              La fatturazione può basarsi su <strong>durata</strong> e
+              <strong>lunghezza</strong> della connessione.
+            </li>
+          </ul>
+
+          <h3>🔹 Commutazione di Pacchetto</h3>
+          <p>
+            Il messaggio viene suddiviso in <strong>pacchetti</strong>, inviati
+            in rete in modo indipendente (possono seguire percorsi differenti).
+            È la modalità più comune nelle reti moderne come Internet.
+          </p>
+          <ul>
+            <li>
+              Elevata <strong>efficienza</strong>: nessuno spreco di risorse
+              quando non si trasmette.
+            </li>
+            <li>
+              Maggiore <strong>tolleranza ai guasti</strong>: se un nodo cade,
+              i pacchetti possono seguire altre vie.
+            </li>
+          </ul>
+
+          <h4>Contro</h4>
+          <ul>
+            <li>Possibile <strong>congestione</strong> e perdita di pacchetti.</li>
+            <li>Servizio <strong>non affidabile</strong> (nessuna garanzia di ordine o consegna).</li>
+            <li>
+              Non è possibile garantire la <strong>qualità del servizio (QoS)</strong>.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          #Strato di rete stack TCP/IP
+          Strato di rete IP 
+          Commutazione di pacchetto
+            -datagrammi
+            -offre servizio connectionlss
+          Instradamento 
+            -algortmi di routin dinamici e gerachici 
+          Ogni reta ha a suo interno un IGP (Internal Gatewa Protocol) che puo esse scelto autonomamente
+          Mentre all'eseterno per la comunicazioe con altre reti e' presente l'EGP che e' comune a tutte le reti
+          
+          Rappresentazione IPv4
+          -Binaria
+          -Dotted decimal
+          Ogni indirizzo e composto da 2 parti
+          - NET-ID -> identifica la rete
+          - HOST-ID -> identifca l'interfaccia di rete in un host su tale rete
+
+          ## Regime ClassFul
+          - Classe A:
+            1 byte -> NET-ID
+            3 byte -> HOST-ID
+
+          - Classe B:
+            2 byte -> NET-ID
+            2 byte -> HOST-ID
+
+          - Classe C:
+            3 byte -> NET-ID
+            1 byte -> HOST-ID
+
+          Regime classless -> rilassa il vincolo della lunghezza della netmask che prima era pari ad un numero fisso 
+        
+          cio vuol dire che la netmask puo essere lunga quanto preferiamo
+          è possibile sclegliere la netmask piu opportuna in base al numero di host della rete
+
+          es. ho un numero di host = 300
+          per qui bit per gli host = 9
+          e i bit della netmask = 23
+        
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

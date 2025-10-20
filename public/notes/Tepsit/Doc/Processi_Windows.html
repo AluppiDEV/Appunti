@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comunicazione tra Processi</title>
+    <link rel="stylesheet" href="../../style/style.css" />
+  </head>
+  <body>
+    <div class="viewer-content">
+      <a class="back-link" href="../index.html">🔙 Torna all'indice</a>
+
+      <header>
+        <h1>🧩 Comunicazione tra Processi</h1>
+        <p>
+          In questa lezione vengono analizzate le modalità di comunicazione e
+          interazione tra <strong>processi</strong> in ambiente Windows, con
+          esempi pratici e concetti fondamentali di <em>memoria condivisa</em> e
+          <em>scambio di messaggi</em>.
+        </p>
+      </header>
+
+      <main>
+        <section class="section">
+          <h2>I. Processi su Windows ⚙️</h2>
+          <p>
+            Nei sistemi operativi <strong>Windows</strong>, ogni processo è
+            <strong>indipendente</strong> dagli altri: non può accedere
+            direttamente alla memoria o alle risorse di un altro processo.
+          </p>
+          <p>
+            Questo isolamento garantisce <strong>sicurezza e stabilità</strong>,
+            ma rende necessario l’uso di
+            <strong>meccanismi di comunicazione interprocesso</strong> (IPC –
+            Inter Process Communication) per consentire la cooperazione tra
+            programmi diversi.
+          </p>
+
+          <p>
+            🔧 Esempio pratico:
+            <a class="doc-link" href="../File/ShellExecute.cpp" target="_blank">
+              📄 Apri file: ShellExecute.cpp
+            </a>
+          </p>
+        </section>
+
+        <hr />
+
+        <section class="section">
+          <h2>II. Memoria Condivisa 💾</h2>
+          <p>
+            La <strong>memoria condivisa</strong> è uno dei metodi più
+            efficienti per far comunicare due processi. In questo modello, più
+            processi possono accedere a una stessa area di memoria fisica,
+            utilizzata per scambiare dati in modo diretto e veloce.
+          </p>
+
+          <h3>Caratteristiche principali</h3>
+          <ul>
+            <li>Altissime prestazioni rispetto ad altri metodi IPC.</li>
+            <li>
+              Richiede <strong>sincronizzazione</strong> per evitare conflitti
+              di accesso simultaneo.
+            </li>
+            <li>
+              Usata spesso per <strong>applicazioni in tempo reale</strong> o
+              comunicazioni frequenti.
+            </li>
+          </ul>
+
+          <p>
+            🔧 Esempio pratico:
+            <a
+              class="doc-link"
+              href="../File/MemoriaCondivisa.c"
+              target="_blank"
+            >
+              📄 Apri file: MemoriaCondivisa.c
+            </a>
+          </p>
+        </section>
+
+        <hr />
+
+        <section class="section">
+          <h2>III. Scambio di Messaggi ✉️</h2>
+          <p>
+            Un altro metodo di comunicazione tra processi è lo
+            <strong>scambio di messaggi</strong>. In questo approccio, i
+            processi si inviano dati o comandi tramite messaggi strutturati, ma
+            sorge un problema:
+            <em>come sapere quando un messaggio è stato inviato o ricevuto?</em>
+          </p>
+
+          <p>
+            Per risolvere questo problema, si utilizzano
+            <strong>modelli di sincronizzazione</strong>, che stabiliscono le
+            regole della comunicazione.
+          </p>
+
+          <h3>Modelli di comunicazione</h3>
+          <ul>
+            <li>
+              <strong>Modello “Telefono”:</strong> comunicazione diretta e
+              simultanea tra i due processi (sincrona).
+            </li>
+            <li>
+              <strong>Modello “Lettera”:</strong> il mittente invia il messaggio
+              e non attende risposta immediata (asincrona).
+            </li>
+            <li>
+              <strong>Modello “Cameriere”:</strong> un processo intermedio
+              riceve e consegna i messaggi tra mittente e destinatario.
+            </li>
+            <li>
+              <strong>Modello “Portinaio”:</strong> un unico processo gestisce
+              tutti i messaggi e coordina la comunicazione.
+            </li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section class="section">
+          <h2>📘 In sintesi</h2>
+          <ul>
+            <li>I processi Windows sono isolati: servono meccanismi IPC.</li>
+            <li>La memoria condivisa è veloce ma richiede sincronizzazione.</li>
+            <li>Lo scambio di messaggi è più sicuro ma più lento.</li>
+            <li>
+              I modelli (Telefono, Lettera, Cameriere, Portinaio) definiscono le
+              modalità di sincronizzazione.
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

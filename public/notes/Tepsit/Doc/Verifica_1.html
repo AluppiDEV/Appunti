@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capitolo 3.5 – Processi, Scheduling e Memoria</title>
+    <link rel="stylesheet" href="../../../style/style.css" />
+  </head>
+  <body>
+    <div class="viewer-content">
+      <header>
+        <h1>💻 Capitolo 3.5 – Processi, Scheduling e Memoria</h1>
+      </header>
+
+      <main>
+        <section>
+          <h2>📌 1. Programma vs Processo</h2>
+          <ul>
+            <li>
+              <strong>Programma</strong> → insieme di istruzioni (statico, come
+              una ricetta).
+            </li>
+            <li>
+              <strong>Processo</strong> → programma in esecuzione (dinamico,
+              come il cuoco che prepara).
+            </li>
+          </ul>
+
+          <p>
+            👉 Il sistema operativo gestisce <strong>processi</strong>, non
+            programmi.
+          </p>
+          <p>
+            Ogni processo è rappresentato dal
+            <strong>PCB (Process Control Block)</strong>, che contiene:
+          </p>
+          <ul>
+            <li>PID (identificatore)</li>
+            <li>Memoria assegnata</li>
+            <li>Registri e program counter</li>
+            <li>File aperti</li>
+            <li>Priorità, sicurezza, ecc.</li>
+          </ul>
+
+          <p>
+            🔹 Il <strong>kernel</strong> controlla i processi (può fermarli,
+            riattivarli, sospenderli).
+          </p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>📌 2. Monotasking</h2>
+          <ul>
+            <li>
+              Nei primi sistemi → la CPU eseguiva una sola cosa alla volta.
+            </li>
+            <li>
+              Problema → CPU velocissima, ma spesso inattiva in attesa di I/O.
+            </li>
+          </ul>
+
+          <p>💾 <strong>Esempi</strong> → MS-DOS, Apple II, Commodore 64.</p>
+          <p>
+            💡 <strong>Batch processing</strong> → lavori eseguiti a lotti, uno
+            dopo l’altro.
+          </p>
+          <p>
+            💡 <strong>Spooling</strong> → buffer per gestire dispositivi lenti
+            (es. stampante).
+          </p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>📌 3. Interruzioni</h2>
+          <ul>
+            <li>
+              <strong>Polling</strong> → la CPU chiede sempre ai dispositivi →
+              lento.
+            </li>
+            <li>
+              <strong>Interrupt</strong> → i dispositivi avvisano la CPU →
+              efficiente.
+            </li>
+          </ul>
+          <p>➡️ Le interruzioni rendono possibile multitasking ed eventi.</p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>📌 4. Multiprogrammazione (Multitasking cooperativo)</h2>
+          <ul>
+            <li>Più programmi in memoria → la CPU passa da uno all’altro.</li>
+            <li>Non è vero multitasking, ma l’utente lo percepisce.</li>
+          </ul>
+
+          <p>
+            Richiede: <strong>scheduler</strong>, cambio di contesto, gestione
+            memoria.
+          </p>
+
+          <h3>Stati di un processo</h3>
+          <ul>
+            <li><strong>New</strong> → creato</li>
+            <li><strong>Ready</strong> → pronto, attende la CPU</li>
+            <li><strong>Execute</strong> → in esecuzione</li>
+            <li><strong>Wait/Blocked</strong> → in attesa di I/O</li>
+            <li><strong>Terminate</strong> → concluso</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>📌 5. Multitasking preemptive</h2>
+          <p>
+            Il kernel può interrompere un processo. Ogni processo ha un
+            <strong>quantum</strong> (tempo massimo).
+          </p>
+
+          <h3>✅ Vantaggi</h3>
+          <ul>
+            <li>CPU condivisa tra più utenti</li>
+            <li>Meno blocchi</li>
+            <li>Esperienza fluida</li>
+          </ul>
+
+          <p>
+            🔹 Tutti i moderni OS (Windows, Linux, macOS, Android, iOS) usano
+            questo metodo.
+          </p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>📌 6. Algoritmi di Scheduling</h2>
+          <ul>
+            <li><strong>FCFS</strong> → First Come, First Served</li>
+            <li><strong>SJF</strong> → Shortest Job First</li>
+            <li><strong>Round Robin</strong> → ogni processo ha un quantum</li>
+            <li>
+              <strong>MLQ</strong> → code multiple con priorità (rischio
+              starvation)
+            </li>
+            <li><strong>SRT</strong> → versione preemptive di SJF</li>
+            <li><strong>MLF</strong> → priorità dinamiche + quantum diversi</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>📌 7. Thread</h2>
+          <p>
+            I processi sono “pesanti”, mentre i <strong>thread</strong> sono più
+            leggeri e condividono risorse del processo.
+          </p>
+
+          <h3>✅ Vantaggi</h3>
+          <p>Meno overhead, più velocità, parallelismo.</p>
+
+          <h3>Esempio</h3>
+          <p>
+            Processo <strong>browser</strong> → thread per scaricare pagina,
+            immagini, aggiornare schermo.
+          </p>
+
+          <h3>Relazioni</h3>
+          <ul>
+            <li><strong>1:1</strong> → un processo, un thread (MS-DOS)</li>
+            <li>
+              <strong>P:1</strong> → più processi, un thread ciascuno (vecchio
+              UNIX)
+            </li>
+            <li>
+              <strong>1:T</strong> → un processo, tanti thread (alcune app Java)
+            </li>
+            <li>
+              <strong>P:T</strong> → molti processi, ognuno con più thread
+              (Windows, Linux, macOS moderni)
+            </li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>📌 Riassunto Capitolo 3.5 – La Memoria</h2>
+
+          <h3>🏗 Gerarchia</h3>
+          <ul>
+            <li>Piccole → veloci e costose</li>
+            <li>Grandi → lente ed economiche</li>
+          </ul>
+          <p>➡️ Uso di più livelli insieme.</p>
+
+          <h3>3.5.1 Cache</h3>
+          <ul>
+            <li>CPU più veloce della RAM → serve cache.</li>
+            <li><strong>Cache hit</strong> ✅ → dato trovato.</li>
+            <li><strong>Cache miss</strong> ❌ → CPU va in RAM.</li>
+          </ul>
+
+          <pre><code>Te = Tc × h + (Tc + Tr) × (1 − h)</code></pre>
+          <p>
+            Tc = tempo cache<br />
+            Tr = tempo RAM<br />
+            h = hit ratio
+          </p>
+
+          <h4>Tipi di cache</h4>
+          <ul>
+            <li>Associativa → veloce ma costosa</li>
+            <li>Mappa diretta → più semplice</li>
+          </ul>
+
+          <p><strong>Scrittura:</strong></p>
+          <ul>
+            <li>Write-through (sicura, lenta)</li>
+            <li>Write-back (veloce, rischiosa)</li>
+          </ul>
+
+          <p>➡️ Cache anche per disco, browser, TLB.</p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h3>3.5.2 Memoria Centrale</h3>
+          <p>Gestita da <strong>MMU</strong>. Metodi:</p>
+
+          <h4>Paginazione</h4>
+          <ul>
+            <li>Memoria divisa in pagine e frame.</li>
+            <li>Page table → traduzione logico-fisico.</li>
+            <li>✅ Niente frammentazione esterna.</li>
+            <li>⚠️ Overhead per PMMU.</li>
+          </ul>
+
+          <h4>Segmentazione</h4>
+          <ul>
+            <li>Memoria in segmenti (codice, dati, stack).</li>
+            <li>Più flessibile ma più complessa.</li>
+          </ul>
+
+          <h4>Segmentazione paginata</h4>
+          <p>Mix dei due sistemi.</p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h3>3.5.3 Memoria Virtuale</h3>
+          <ul>
+            <li>Parte del disco usata come RAM.</li>
+            <li>Tecnica → <strong>demand paging</strong>.</li>
+            <li><strong>Page fault</strong> → caricamento da disco.</li>
+            <li><strong>Thrashing</strong> → troppi swap.</li>
+          </ul>
+
+          <p>💡 Soluzioni: TLB, resident set, partizioni/file di swap.</p>
+        </section>
+
+        <hr />
+
+        <section>
+          <h3>3.5.4 Riassunto</h3>
+          <ul>
+            <li>Cache → veloce, piccola</li>
+            <li>RAM → media</li>
+            <li>Disco (memoria virtuale) → grande, lenta</li>
+          </ul>
+
+          <p><strong>Gestione multitasking:</strong></p>
+          <ul>
+            <li>Paginazione → blocchi fissi</li>
+            <li>Segmentazione → blocchi variabili</li>
+            <li>Segmentazione paginata → combinazione</li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>📌 Gestione logica dei volumi e RAID</h2>
+
+          <h3>🔹 Volumi logici</h3>
+          <p>
+            Partizioni rigide → difficile cambiarle.<br />
+            Con <strong>LVM/JBOD</strong> → più partizioni unite in uno spazio
+            unico.
+          </p>
+          <p>✅ Espandibile, gestibile come un solo disco.</p>
+
+          <h3>🔹 RAID</h3>
+          <p>Più dischi come uno solo. Può essere software o hardware.</p>
+
+          <h4>Tipi base</h4>
+          <ul>
+            <li>
+              <strong>RAID-0 (Striping)</strong> → veloce, zero sicurezza.
+            </li>
+            <li>
+              <strong>RAID-1 (Mirroring)</strong> → dati duplicati, affidabile.
+            </li>
+            <li>
+              <strong>RAID-5</strong> → striping + parità → compromesso tra
+              velocità e sicurezza.
+            </li>
+          </ul>
+        </section>
+
+        <hr />
+
+        <section>
+          <h2>📌 Capitolo 1.1.1 – Processi: competizione e cooperazione</h2>
+          <p>
+            <strong>Processo</strong> = programma in esecuzione. Info nel PCB:
+            memoria, file, priorità, registri.
+          </p>
+
+          <h3>🔹 Processi indipendenti vs interagenti</h3>
+          <ul>
+            <li><strong>Indipendenti</strong> → risultato deterministico.</li>
+            <li><strong>Interagenti</strong> → influenzano altri processi.</li>
+          </ul>
+
+          <p>Due forme:</p>
+          <ul>
+            <li><strong>Competizione</strong> → risorse contese</li>
+            <li><strong>Cooperazione</strong> → collaborazione tra processi</li>
+          </ul>
+
+          <h3>🔹 Concorrenza vs Parallelismo</h3>
+          <ul>
+            <li>
+              <strong>Concorrenza</strong> → processi si alternano sulla stessa
+              CPU.
+            </li>
+            <li>
+              <strong>Parallelismo</strong> → processi su più core
+              contemporaneamente.
+            </li>
+          </ul>
+
+          <h3>🔹 Tassonomia di Flynn</h3>
+          <ul>
+            <li><strong>SISD</strong> → 1 istruzione, 1 dato (Von Neumann)</li>
+            <li><strong>SIMD</strong> → 1 istruzione, più dati (MMX, PS2)</li>
+            <li>
+              <strong>MIMD</strong> → più istruzioni, più dati (multicore
+              moderni)
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

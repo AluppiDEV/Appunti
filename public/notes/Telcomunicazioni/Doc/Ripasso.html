@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calcolo Correnti e Tensioni</title>
+    <link rel="stylesheet" href="../../../style/style.css" />
+
+    <!-- Libreria per formule LaTeX -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+
+  <body>
+    <div class="viewer-content">
+      <header>
+        <h1>Calcolo Correnti e Tensioni del Circuito</h1>
+        <h3 style="color: red !important">Calcoli ancora da sistemare</h3>
+      </header>
+
+      <p>
+        Per calcolare la corrente totale è necessario avere una resistenza che
+        abbia la stessa tensione ai capi, per cui si usa la resistenza
+        equivalente (<b>R<sub>eq</sub></b
+        >).
+      </p>
+
+      <p>
+        Per calcolare due resistenze in parallelo possiamo usare la formula:
+      </p>
+
+      <div class="mathjax">$$ R_{eq} = \frac{R_1 \cdot R_2}{R_1 + R_2} $$</div>
+
+      <hr />
+
+      <h3>Esempio di esercizio</h3>
+
+      <img
+        src="../Img/Circuito1.png"
+        alt="Circuito 1"
+        style="max-width: 400px; display: block; margin: 20px auto"
+      />
+
+      <p>Per questo circuito dobbiamo trovare:</p>
+      <ul>
+        <li>I<sub>1</sub> = ?</li>
+        <li>V<sub>ab</sub> = ?</li>
+        <li>V<sub>cd</sub> = ?</li>
+        <li>I<sub>6</sub> = ?</li>
+        <li>V<sub>7</sub> = ?</li>
+      </ul>
+
+      <section>
+        <h2>Risoluzione</h2>
+
+        <hr />
+
+        <h3>Resistenze equivalenti</h3>
+        <ul class="no-bullets">
+          <li>
+            $$ R_{EQ1} = R_{4\parallel5} = \frac{10k \cdot 3k}{10k + 3k} =
+            2307.69~\Omega $$
+          </li>
+          <li>
+            $$ R_{EQ2} = R_{6\parallel7} = \frac{10k \cdot 3k}{10k + 3k} =
+            2307.69~\Omega $$
+          </li>
+          <li>$$ R_{EQ3} = R_{EQ1} + R_{EQ2} = 4615.38~\Omega $$</li>
+          <li>
+            $$ R_{EQ4} = R_3 + R_{EQ3} = 3000 + 4615.38 = 7615.38~\Omega $$
+          </li>
+        </ul>
+
+        <hr />
+
+        <h3>Tensioni nodali</h3>
+        <div class="mathjax">
+          $$ V_A = 5.903~\text{V}, \quad V_B = 3.578~\text{V}, \quad V_C =
+          1.789~\text{V} $$
+        </div>
+
+        <hr />
+
+        <h3>Grandezze richieste</h3>
+        <ul class="no-bullets">
+          <li>
+            $$ I_1 = \frac{V_1 - V_A}{R_1} = \frac{10 - 5.903}{3000} =
+            1.366~\text{mA} $$
+          </li>
+          <li>$$ V_{ab} = V_A = 5.903~\text{V} $$</li>
+          <li>$$ V_{ac} = V_B - V_C = 1.789~\text{V} $$</li>
+          <li>
+            $$ I_6 = \frac{V_C}{R_6} = \frac{1.789}{10000} = 0.179~\text{mA} $$
+          </li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <section>
+        <h3>Calcoli per V₇</h3>
+        <ul class="no-bullets">
+          <li>$$ I_6 = \frac{R_7}{R_6 \cdot I_6} $$</li>
+          <li>$$ V_6 = {R_6 \cdot I_6} $$</li>
+          <li>$$ V_7 = V_6 $$</li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <section>
+        <h3>Risultati finali</h3>
+        <ul class="no-bullets">
+          <li>$$ I_1 = 1.3~\text{mA}$$</li>
+          <li>$$ V_{ab} = 6.1~\text{V}$$</li>
+          <li>$$ V_{cd} = 1.7~\text{V}$$</li>
+          <li>$$ I_6 = 0.179~\text{mA}$$</li>
+          <li>$$ V_7 =BOH~\text{V}$$</li>
+          <li>$$$$</li>
+        </ul>
+      </section>
+
+      <footer style="margin-top: 50px">
+        <p>
+          <em>Le formule sono gestite da MathJax per una resa ottimale.</em>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+/* ========== IMPORT ALTRI STILI ========= */
+@import "./Appunti.css";
+@import "./Home.css";
+@import "./HomeButton.css";
+@import "./Iframe.css";
+@import "./Link.css";
+@import "./MathJax.css";
+@import "./Navbar.css";
+@import "./Scrollbar.css";
+@import "./Sidebar.css";
+
+/* ========== RESET E STILE BASE ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  background-color: #111;
+  color: #f5f5f5;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+  color: #ffd700;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #333;
+  margin: 1.5rem 0;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 700px) {
+  .doc-link {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .navbar span {
+    display: none;
+  }
+
+  .sidebar {
+    width: 200px;
+    left: -200px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  main {
+    padding: 0 1rem 2rem;
+  }
+
+  main h2 {
+    font-size: 1.5rem;
+  }
+}

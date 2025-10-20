@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="it" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Visualizzatore Appunti</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="./img/Talpa.png" />
+    <style>
+      body {
+        overflow: hidden;
+        height: 100vh;
+        background-color: #121212;
+        color: #f8f9fa;
+      }
+
+      /* Sidebar */
+      #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 260px;
+        background-color: #1e1e1e;
+        border-right: 1px solid #2c2c2c;
+        overflow-y: auto;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1040;
+      }
+
+      #sidebar.open {
+        transform: translateX(0);
+      }
+
+      #mainContent {
+        margin-top: 56px;
+        height: calc(100vh - 56px);
+      }
+
+      iframe.viewer {
+        border: none;
+        width: 100%;
+        height: 100%;
+        background-color: #1a1a1a;
+      }
+
+      .accordion-button {
+        background-color: #222 !important;
+        color: #ddd !important;
+      }
+
+      .accordion-button:not(.collapsed) {
+        background-color: #333 !important;
+        color: #fff !important;
+      }
+
+      .accordion-body {
+        background-color: #1c1c1c;
+      }
+
+      .list-group-item {
+        background-color: transparent;
+        border: none;
+      }
+
+      .list-group-item a {
+        color: #adb5bd;
+        text-decoration: none;
+      }
+
+      .list-group-item a:hover {
+        color: #fff;
+      }
+
+      .btn-outline-light {
+        border-color: #aaa;
+        color: #ddd;
+      }
+
+      .btn-outline-light:hover {
+        background-color: #444;
+        border-color: #666;
+      }
+
+      a.home-btn {
+        background-color: #343a40;
+        color: #f8f9fa;
+      }
+
+      a.home-btn:hover {
+        background-color: #495057;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <button
+          class="btn btn-outline-light me-2"
+          id="toggleMenu"
+          type="button"
+        >
+          ☰ Menu
+        </button>
+        <span class="navbar-brand mb-0 h1 flex-grow-1 text-center">
+          Visualizzatore Appunti
+        </span>
+        <button class="btn btn-outline-light" onclick="goBack()">
+          ← Torna Indietro
+        </button>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="p-3">
+      <h5 class="mb-3">📘 Appunti</h5>
+      <a
+        href="notes/main.html"
+        target="viewerFrame"
+        class="btn home-btn w-100 mb-3"
+      >
+        🏠 Torna alla Home
+      </a>
+
+      <div class="accordion" id="menuAccordion">
+        <!-- Letteratura -->
+        <div class="accordion-item bg-dark border-0">
+          <h2 class="accordion-header" id="headingLetteratura">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseLetteratura"
+            >
+              ✍️ Letteratura
+            </button>
+          </h2>
+          <div
+            id="collapseLetteratura"
+            class="accordion-collapse collapse"
+            data-bs-parent="#menuAccordion"
+          >
+            <div class="accordion-body p-0">
+              <ul class="list-group list-group-flush submenu">
+                <li class="list-group-item">
+                  <a href="notes/letteratura/Doc/Barocco.html" target="viewerFrame">Barocco</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="notes/letteratura/Doc/Manierismo.html" target="viewerFrame">Manierismo</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="notes/letteratura/Doc/Dissidenti_e_Utopia.html" target="viewerFrame">Assolutismo</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="notes/letteratura/Doc/Esame_Stato_Prova_Scritta.html" target="viewerFrame">Esame di stato</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Storia -->
+        <div class="accordion-item bg-dark border-0">
+          <h2 class="accordion-header" id="headingStoria">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseStoria"
+            >
+              📖 Storia
+            </button>
+          </h2>
+          <div
+            id="collapseStoria"
+            class="accordion-collapse collapse"
+            data-bs-parent="#menuAccordion"
+          >
+            <div class="accordion-body p-0">
+              <h6 class="mt-2 ps-3 text-secondary">Capitolo I</h6>
+              <ul class="list-group list-group-flush submenu">
+                <li class="list-group-item">
+                  <a href="notes/Storia/Doc/Capitolo 1/LuigiXIV.html" target="viewerFrame">Luigi XIV</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="notes/Storia/Doc/Capitolo 1/PietroBIG.html" target="viewerFrame">Pietro il Grande</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="notes/Storia/Doc/Capitolo 1/GovernoInglese.html" target="viewerFrame">Governo Inglese</a>
+                </li>
+              </ul>
+
+              <h6 class="mt-3 ps-3 text-secondary">Capitolo II</h6>
+              <ul class="list-group list-group-flush submenu">
+                <li class="list-group-item">
+                  <a href="notes/Storia/Doc/Capitolo2.html" target="viewerFrame">Guerre di successione</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tepsit -->
+        <div class="accordion-item bg-dark border-0">
+          <h2 class="accordion-header" id="headingTepsit">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTepsit"
+            >
+              💻 Tepsit
+            </button>
+          </h2>
+          <div
+            id="collapseTepsit"
+            class="accordion-collapse collapse"
+            data-bs-parent="#menuAccordion"
+          >
+            <div class="accordion-body p-0">
+              <ul class="list-group list-group-flush submenu">
+                <li class="list-group-item">
+                  <a href="notes/Tepsit/Doc/Verifica_1.html" target="viewerFrame">Ripasso per la prima verifica</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sistemi -->
+        <div class="accordion-item bg-dark border-0">
+          <h2 class="accordion-header" id="headingSistemi">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseSistemi"
+            >
+              ⚙️ Sistemi
+            </button>
+          </h2>
+          <div
+            id="collapseSistemi"
+            class="accordion-collapse collapse"
+            data-bs-parent="#menuAccordion"
+          >
+            <div class="accordion-body p-0">
+              <ul class="list-group list-group-flush submenu">
+                <li class="list-group-item">
+                  <a href="notes/Sistemi/Doc/NetworkLayer.html" target="viewerFrame">Network layer</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telecomunicazioni -->
+        <div class="accordion-item bg-dark border-0">
+          <h2 class="accordion-header" id="headingTelecom">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTelecom"
+            >
+              ⚠️ Telecomunicazioni
+            </button>
+          </h2>
+          <div
+            id="collapseTelecom"
+            class="accordion-collapse collapse"
+            data-bs-parent="#menuAccordion"
+          >
+            <div class="accordion-body p-0">
+              <ul class="list-group list-group-flush submenu">
+                <li class="list-group-item">
+                  <a href="notes/Telcomunicazioni/Doc/Ripasso.html" target="viewerFrame">Ripasso</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div id="mainContent" class="container-fluid p-0">
+      <iframe
+        id="viewerFrame"
+        name="viewerFrame"
+        src="notes/main.html"
+        class="viewer"
+      ></iframe>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const toggleMenu = document.getElementById("toggleMenu");
+
+      toggleMenu.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          !sidebar.contains(event.target) &&
+          !toggleMenu.contains(event.target)
+        ) {
+          sidebar.classList.remove("open");
+        }
+      });
+
+      const sidebarLinks = document.querySelectorAll(
+        "#sidebar a[target='viewerFrame']"
+      );
+      sidebarLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          sidebar.classList.remove("open");
+        });
+      });
+
+      function goBack() {
+        const iframe = document.getElementById("viewerFrame");
+        try {
+          iframe.contentWindow.history.back();
+        } catch (e) {
+          iframe.src = "notes/main.html";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calcolo Correnti e Tensioni</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libreria per formule LaTeX -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <style>
+      /*=========== Stili per MathJax ==========*/
+      ul.no-bullets {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      ul.no-bullets li {
+        margin: 10px 0;
+      }
+
+      .mathjax {
+        text-align: center;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+
+  <body class="bg-dark text-light">
+    <div class="container py-5">
+      <!-- HEADER -->
+      <header class="text-center mb-5">
+        <h1 class="text-warning fw-bold mb-3">⚡ Lezione 18/10/25</h1>
+        <p class="text-secondary">
+          Calcolo di correnti e tensioni nei circuiti elettrici
+        </p>
+      </header>
+
+      <main class="mx-auto" style="max-width: 900px">
+        <!-- Circuito -->
+        <section class="mb-4">
+          <div
+            class="card bg-dark border-light rounded-4 shadow-lg text-center"
+          >
+            <div class="card-body">
+              <h4 class="text-info mb-3">Circuito</h4>
+              <img
+                src="../Img/Circuito-20-10.jpg"
+                alt="Circuito"
+                class="img-fluid"
+                style="
+                  max-height: 400px;
+                  margin: 0 auto;
+                  transform: rotate(-90deg);
+                "
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Dati del problema -->
+        <section class="mb-4">
+          <div class="card bg-dark border-light rounded-4 shadow-lg">
+            <div class="card-body">
+              <h4 class="text-warning mb-3">Dati del problema</h4>
+              <ul class="no-bullets">
+                <li>$$ \text{Resistenze pari} = 1k \Omega$$</li>
+                <li>$$ \text{Resistenze dispari} = 10k \Omega$$</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Dati da trovare -->
+        <section class="mb-4">
+          <div class="card bg-dark border-light rounded-4 shadow-lg">
+            <div class="card-body">
+              <h4 class="text-info mb-3">Dati da trovare</h4>
+              <ul class="no-bullets">
+                <li>$$?$$</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sovrapposizione effetti -->
+        <section class="mb-4">
+          <div class="card bg-dark border-light rounded-4 shadow-lg">
+            <div class="card-body">
+              <h4 class="text-warning mb-3">Thevenin</h4>
+
+              <!-- Primo circuito -->
+              <h5 class="text-info mt-3">Escludiamo R10 e R11</h5>
+
+              <h6 class="text-primary mt-2">
+                Calcoliamo la resistenza equivalente
+              </h6>
+              <ul class="no-bullets">
+                <li>
+                  $$ R_{EQ} = (R_1 \parallel R_2 \parallel (R_3 + R_4) \parallel
+                  (R_5 \parallel R_6)) + (R_7 \parallel R_8) + R_9$$
+                </li>
+                <li>
+                  $$ R_{EQ} = (10000 \parallel 1000 \parallel (10000 + 1000)
+                  \parallel (10000 \parallel 1000)) + (10000 \parallel 1000) +
+                  10000 $$
+                </li>
+                <li>$$ R_{TH} = R_{EQ} = 11.345 \Omega $$</li>
+              </ul>
+
+              <h6 class="text-primary mt-3">
+                Troviamo il valore dei generatori
+              </h6>
+              <ul class="no-bullets">
+                <li>$$ V_{TH} = E_1 + E_2 = 22 V $$</li>
+              </ul>
+
+              <h6 class="text-primary mt-3">
+                Calcoliamo la tensione ai capi AB
+              </h6>
+              <ul class="no-bullets">
+                <li>$$V_{AB} =  $$</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

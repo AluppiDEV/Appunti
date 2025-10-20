@@ -1,0 +1,15 @@
+
+/* ========== CONTENUTO PRINCIPALE ========== */
+.main {
+  margin-top: 50px;
+  height: calc(100vh - 50px);
+  padding: 0;
+  overflow: hidden;
+}
+
+.viewer {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #111;
+}

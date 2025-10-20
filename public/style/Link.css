@@ -1,0 +1,32 @@
+/* ========== LINK ========== */
+a {
+  color: #1e90ff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #ffd700;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* ========== LINK AI DOCUMENTI ========== */
+.doc-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  background-color: #252526;
+  border-radius: 6px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.doc-link:hover {
+  background-color: #3a3a3a;
+  transform: scale(1.02);
+}

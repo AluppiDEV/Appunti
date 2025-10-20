@@ -1,0 +1,17 @@
+/* ========== STILE CONTENUTO IFRAME E PAGINE APPUNTI ========== */
+.viewer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #f5f5f5;
+}
+
+.viewer-content h1,
+.viewer-content h2,
+.viewer-content h3 {
+  color: #ffd700;
+}
+
+.viewer-content ul {
+  margin-left: 1.5rem;
+}

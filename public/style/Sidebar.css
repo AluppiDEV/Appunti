@@ -1,0 +1,124 @@
+/* ========== SIDEBAR ========== */
+.sidebar {
+  position: fixed;
+  top: 50px;
+  left: -250px;
+  width: 250px;
+  height: calc(100vh - 50px);
+  background: #1e1e1e;
+  color: #fff;
+  padding: 1rem;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  z-index: 999;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar h3 {
+  color: #ffd700;
+  margin-bottom: 1rem;
+  font-size: 18px;
+}
+
+/* Menu principale */
+.sidebar .menu {
+  list-style: none;
+}
+
+.sidebar .menu-item {
+  margin-bottom: 0.7rem;
+  transform: translateX(0);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sidebar .menu-item:hover {
+  transform: translateX(4px);
+}
+
+/* Pulsanti di apertura submenu */
+.sidebar .submenu-toggle {
+  width: 100%;
+  background: #2a2a2a;
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.sidebar .submenu-toggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.15), transparent);
+  transition: width 0.4s ease;
+}
+
+.sidebar .submenu-toggle:hover::after {
+  width: 100%;
+}
+
+.sidebar .submenu-toggle:hover {
+  background: #3a3a3a;
+  transform: scale(1.03);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+/* Submenu */
+.sidebar .submenu {
+  display: none;
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.sidebar .submenu.open {
+  display: block;
+}
+
+.sidebar .submenu li {
+  margin-bottom: 0.3rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: slideIn 0.3s ease forwards;
+}
+
+.sidebar .submenu a {
+  color: #aaa;
+  text-decoration: none;
+  display: block;
+  padding: 0.4rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar .submenu a:hover {
+  background: #2a2a2a;
+  color: #ffd700;
+  transform: translateX(3px);
+}
+
+/* Animazioni chiave */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
