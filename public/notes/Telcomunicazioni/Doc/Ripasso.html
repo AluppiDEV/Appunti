@@ -1,134 +1,199 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calcolo Correnti e Tensioni</title>
-    <link rel="stylesheet" href="../../../style/style.css" />
+    <title>⚙️ Calcolo Correnti e Tensioni</title>
 
-    <!-- Libreria per formule LaTeX -->
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script
       id="MathJax-script"
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+
+    <!-- Stile personalizzato -->
+    <link rel="stylesheet" href="../../../style/style.css" />
   </head>
 
-  <body>
-    <div class="viewer-content">
-      <header>
-        <h1>Calcolo Correnti e Tensioni del Circuito</h1>
-        <h3 style="color: red !important">Calcoli ancora da sistemare</h3>
+  <body class="bg-dark text-light">
+    <div class="container py-5" style="max-width: 900px">
+      <!-- HEADER -->
+      <header class="text-center mb-5">
+        <h1 class="fw-bold text-warning">⚙️ Calcolo Correnti e Tensioni</h1>
+        <p class="text-secondary">
+          Analisi e risoluzione di un circuito resistivo in corrente continua
+          utilizzando il metodo delle resistenze equivalenti e le leggi di Ohm e
+          Kirchhoff.
+        </p>
+        <p class="text-danger fw-semibold">
+          ⚠️ Calcoli provvisori — alcune formule devono ancora essere
+          verificate.
+        </p>
+        <hr class="border-secondary opacity-50" />
       </header>
 
-      <p>
-        Per calcolare la corrente totale è necessario avere una resistenza che
-        abbia la stessa tensione ai capi, per cui si usa la resistenza
-        equivalente (<b>R<sub>eq</sub></b
-        >).
-      </p>
+      <!-- INTRO -->
+      <section class="mb-5">
+        <div class="card bg-dark border-light shadow-sm rounded-4">
+          <div class="card-body">
+            <p>
+              Per determinare la <strong>corrente totale</strong> in un
+              circuito, è necessario ridurre il sistema resistivo a una sola
+              resistenza equivalente \( R_{eq} \), cioè una resistenza che
+              presenta la stessa tensione ai capi dell’intero circuito.
+            </p>
+            <p>
+              Nel caso di due resistenze in parallelo, la formula generale è:
+            </p>
 
-      <p>
-        Per calcolare due resistenze in parallelo possiamo usare la formula:
-      </p>
-
-      <div class="mathjax">$$ R_{eq} = \frac{R_1 \cdot R_2}{R_1 + R_2} $$</div>
-
-      <hr />
-
-      <h3>Esempio di esercizio</h3>
-
-      <img
-        src="../Img/Circuito1.png"
-        alt="Circuito 1"
-        style="max-width: 400px; display: block; margin: 20px auto"
-      />
-
-      <p>Per questo circuito dobbiamo trovare:</p>
-      <ul>
-        <li>I<sub>1</sub> = ?</li>
-        <li>V<sub>ab</sub> = ?</li>
-        <li>V<sub>cd</sub> = ?</li>
-        <li>I<sub>6</sub> = ?</li>
-        <li>V<sub>7</sub> = ?</li>
-      </ul>
-
-      <section>
-        <h2>Risoluzione</h2>
-
-        <hr />
-
-        <h3>Resistenze equivalenti</h3>
-        <ul class="no-bullets">
-          <li>
-            $$ R_{EQ1} = R_{4\parallel5} = \frac{10k \cdot 3k}{10k + 3k} =
-            2307.69~\Omega $$
-          </li>
-          <li>
-            $$ R_{EQ2} = R_{6\parallel7} = \frac{10k \cdot 3k}{10k + 3k} =
-            2307.69~\Omega $$
-          </li>
-          <li>$$ R_{EQ3} = R_{EQ1} + R_{EQ2} = 4615.38~\Omega $$</li>
-          <li>
-            $$ R_{EQ4} = R_3 + R_{EQ3} = 3000 + 4615.38 = 7615.38~\Omega $$
-          </li>
-        </ul>
-
-        <hr />
-
-        <h3>Tensioni nodali</h3>
-        <div class="mathjax">
-          $$ V_A = 5.903~\text{V}, \quad V_B = 3.578~\text{V}, \quad V_C =
-          1.789~\text{V} $$
+            <div class="text-center my-3">
+              $$ R_{eq} = \frac{R_1 \cdot R_2}{R_1 + R_2} $$
+            </div>
+          </div>
         </div>
-
-        <hr />
-
-        <h3>Grandezze richieste</h3>
-        <ul class="no-bullets">
-          <li>
-            $$ I_1 = \frac{V_1 - V_A}{R_1} = \frac{10 - 5.903}{3000} =
-            1.366~\text{mA} $$
-          </li>
-          <li>$$ V_{ab} = V_A = 5.903~\text{V} $$</li>
-          <li>$$ V_{ac} = V_B - V_C = 1.789~\text{V} $$</li>
-          <li>
-            $$ I_6 = \frac{V_C}{R_6} = \frac{1.789}{10000} = 0.179~\text{mA} $$
-          </li>
-        </ul>
       </section>
 
-      <hr />
-
-      <section>
-        <h3>Calcoli per V₇</h3>
-        <ul class="no-bullets">
-          <li>$$ I_6 = \frac{R_7}{R_6 \cdot I_6} $$</li>
-          <li>$$ V_6 = {R_6 \cdot I_6} $$</li>
-          <li>$$ V_7 = V_6 $$</li>
-        </ul>
+      <!-- ESEMPIO -->
+      <section class="mb-5">
+        <h2 class="text-info mb-3">Esempio di Esercizio</h2>
+        <div class="card bg-dark border-light shadow-sm rounded-4">
+          <div class="card-body">
+            <p>Dato il seguente circuito:</p>
+            <img
+              src="../Img/Circuito1.png"
+              alt="Schema del circuito"
+              class="img-fluid d-block mx-auto my-3 rounded-3 border border-secondary"
+              style="max-width: 400px"
+            />
+            <p>Determinare le seguenti grandezze:</p>
+            <ul>
+              <li>\( I_1 \)</li>
+              <li>\( V_{ab} \)</li>
+              <li>\( V_{cd} \)</li>
+              <li>\( I_6 \)</li>
+              <li>\( V_7 \)</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
-      <hr />
+      <!-- CALCOLI -->
+      <section class="mb-5">
+        <h2 class="text-success mb-3">Risoluzione e Calcoli</h2>
+        <div class="card bg-dark border-light shadow-sm rounded-4">
+          <div class="card-body">
+            <h5 class="text-warning mb-2">1️⃣ Resistenze equivalenti</h5>
+            <div class="mathjax">
+              $$ R_{EQ1} = R_{4\parallel5} = \frac{10k \cdot 3k}{10k + 3k} =
+              2307.69~\Omega $$ $$ R_{EQ2} = R_{6\parallel7} = \frac{10k \cdot
+              3k}{10k + 3k} = 2307.69~\Omega $$ $$ R_{EQ3} = R_{EQ1} + R_{EQ2} =
+              4615.38~\Omega $$ $$ R_{EQ4} = R_3 + R_{EQ3} = 3000 + 4615.38 =
+              7615.38~\Omega $$
+            </div>
 
-      <section>
-        <h3>Risultati finali</h3>
-        <ul class="no-bullets">
-          <li>$$ I_1 = 1.3~\text{mA}$$</li>
-          <li>$$ V_{ab} = 6.1~\text{V}$$</li>
-          <li>$$ V_{cd} = 1.7~\text{V}$$</li>
-          <li>$$ I_6 = 0.179~\text{mA}$$</li>
-          <li>$$ V_7 =BOH~\text{V}$$</li>
-          <li>$$$$</li>
-        </ul>
+            <hr class="border-secondary my-4" />
+
+            <h5 class="text-warning mb-2">2️⃣ Tensioni nodali</h5>
+            <div class="mathjax">
+              $$ V_A = 5.903~\text{V}, \quad V_B = 3.578~\text{V}, \quad V_C =
+              1.789~\text{V} $$
+            </div>
+
+            <hr class="border-secondary my-4" />
+
+            <h5 class="text-warning mb-2">3️⃣ Grandezze richieste</h5>
+            <div class="mathjax">
+              $$ I_1 = \frac{V_1 - V_A}{R_1} = \frac{10 - 5.903}{3000} =
+              1.366~\text{mA} $$ $$ V_{ab} = V_A = 5.903~\text{V} $$ $$ V_{ac} =
+              V_B - V_C = 1.789~\text{V} $$ $$ I_6 = \frac{V_C}{R_6} =
+              \frac{1.789}{10000} = 0.179~\text{mA} $$
+            </div>
+          </div>
+        </div>
       </section>
 
-      <footer style="margin-top: 50px">
-        <p>
-          <em>Le formule sono gestite da MathJax per una resa ottimale.</em>
+      <!-- SEZIONE AGGIUNTIVA -->
+      <section class="mb-5">
+        <h2 class="text-info mb-3">Calcoli per \( V_7 \)</h2>
+        <div class="card bg-dark border-light shadow-sm rounded-4">
+          <div class="card-body">
+            <div class="mathjax">
+              $$ I_6 = \frac{R_7}{R_6 \cdot I_6} $$ $$ V_6 = R_6 \cdot I_6 $$ $$
+              V_7 = V_6 $$
+            </div>
+            <p class="text-secondary">
+              ⚙️ Il valore di \( V_7 \) deve ancora essere verificato sulla base
+              del modello di collegamento del circuito.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RISULTATI FINALI -->
+      <section class="mb-5">
+        <h2 class="text-warning mb-3">Risultati Finali</h2>
+        <div class="card bg-dark border-light shadow-sm rounded-4">
+          <div class="card-body text-center">
+            <table
+              class="table table-dark table-bordered border-secondary align-middle"
+            >
+              <thead>
+                <tr class="text-info">
+                  <th>Grandezza</th>
+                  <th>Valore</th>
+                  <th>Unità</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>\( I_1 \)</td>
+                  <td>1.36</td>
+                  <td>mA</td>
+                </tr>
+                <tr>
+                  <td>\( V_{ab} \)</td>
+                  <td>5.90</td>
+                  <td>V</td>
+                </tr>
+                <tr>
+                  <td>\( V_{cd} \)</td>
+                  <td>1.79</td>
+                  <td>V</td>
+                </tr>
+                <tr>
+                  <td>\( I_6 \)</td>
+                  <td>0.179</td>
+                  <td>mA</td>
+                </tr>
+                <tr>
+                  <td>\( V_7 \)</td>
+                  <td>—</td>
+                  <td>da calcolare</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTE -->
+      <footer class="text-center mt-5">
+        <p class="text-secondary small">
+          🧮 Le formule sono renderizzate con <strong>MathJax</strong> per una
+          resa grafica ottimale delle espressioni matematiche.
         </p>
       </footer>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
