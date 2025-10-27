@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
@@ -9,7 +11,7 @@ body {
   font-family: system-ui, sans-serif;
 }
 
-/* --- SCROLLBAR PERSONALIZZATA (TEMA GIALLO) --- */
+/* --- SCROLLBAR PERSONALIZZATA (TEMA BLU SCURO ELEGANTE) --- */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -17,26 +19,30 @@ body {
 
 /* Sfondo del canale */
 ::-webkit-scrollbar-track {
-  background: #1a1a1a; /* scuro per contrasto */
+  background: #0f172a; /* blu notte, coerente con bg-gray-950 / slate-900 */
   border-radius: 8px;
 }
 
 /* Maniglia (thumb) */
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #ffb900, #ffcc33);
+  background: linear-gradient(
+    180deg,
+    #1e3a8a,
+    #3b82f6
+  ); /* blu profondo → azzurro vivo */
   border-radius: 8px;
-  border: 2px solid #1a1a1a;
-  transition: background 0.3s ease, transform 0.2s ease;
+  border: 2px solid #0f172a;
+  transition: all 0.3s ease;
 }
 
-/* Hover: più luminoso + leggera espansione */
+/* Hover: effetto più chiaro e glow tenue */
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #ffd24d, #ffb900);
-  transform: scaleX(1.1);
+  background: linear-gradient(180deg, #2563eb, #60a5fa);
+  box-shadow: 0 0 6px #3b82f666;
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #ffb900 #1a1a1a;
+  scrollbar-color: #1e3a8a #0f172a;
 }

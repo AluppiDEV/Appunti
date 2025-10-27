@@ -1,42 +1,26 @@
-import React, { useEffect, useState } from "react";
-import Sidebar from "./components/Sidebar";
-import Viewer from "./components/Viewer";
-import Editor from "./components/Editor";
-import { auth } from "./firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Sidebar, IndexPage, DocPage } from "../src";
 
 export default function App() {
-  const [selected, setSelected] = useState("rete.md");
-  const [editing, setEditing] = useState(false);
-  const [user, setUser] = useState(null);
-  const [lastUpdate, setLastUpdate] = useState(0); // trigger per ricaricare il Viewer
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (u) => setUser(u));
-    return unsubscribe;
-  }, []);
+  const docs = [
+    { title: "Rete e Connessioni", filename: "rete" },
+    { title: "Guida di Sistema", filename: "guida" },
+    { title: "API Reference", filename: "api" },
+  ];
 
   return (
-    <div className="flex h-screen bg-gray-950 text-gray-100">
-      <Sidebar selected={selected} onSelect={setSelected} />
+    <Router>
+      <div className="flex h-screen bg-gray-950 text-gray-100">
+        <Sidebar docs={docs} />
 
-      <main className="flex-1 overflow-y-auto p-6">
-        <Viewer
-          fileName={selected}
-          onEdit={() => setEditing(true)}
-          user={user}
-          lastUpdate={lastUpdate} // 👈 passiamo lastUpdate al Viewer
-        />
-
-        {editing && (
-          <Editor
-            fileName={selected}
-            onClose={() => setEditing(false)}
-            user={user}
-            onSave={() => setLastUpdate(Date.now())} // 👈 aggiorniamo lastUpdate dopo il save
-          />
-        )}
-      </main>
-    </div>
+        <main className="flex-1 overflow-y-auto p-6 md:ml-64">
+          <Routes>
+            <Route path="/" element={<IndexPage />} />
+            <Route path="/doc/:id" element={<DocPage />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
