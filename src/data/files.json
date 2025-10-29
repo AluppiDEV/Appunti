@@ -1,0 +1,21 @@
+{
+  "Storia": [
+    {
+      "title": "Luigi XIV",
+      "description": "La storia dell'impero di Luigi XIV",
+      "filename": "LuigiXIV"
+    },
+    {
+      "title": "Rivoluzione Francese",
+      "description": "Eventi principali della Rivoluzione",
+      "filename": "RivoluzioneFrancese"
+    }
+  ],
+  "Scienze": [
+    {
+      "title": "Il Sistema Solare",
+      "description": "Pianeti e caratteristiche principali",
+      "filename": "SistemaSolare"
+    }
+  ]
+}
