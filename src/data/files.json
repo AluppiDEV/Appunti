@@ -1,21 +1,56 @@
 {
   "Storia": [
     {
-      "title": "Luigi XIV",
-      "description": "La storia dell'impero di Luigi XIV",
-      "filename": "LuigiXIV"
+      "chapter": "1",
+      "arguments": [
+        {
+          "title": "L'Assolutismo di Luigi XIV",
+          "description": "Questo macro-argomento copre l'ascesa e l'apogeo del potere monarchico in Francia, con Luigi XIV come caso studio principale.",
+          "filename": "25ST0001"
+        },
+        {
+          "title": "L'Assolutismo di Pietro il Grande",
+          "description": "Questo macro-argomento riguarda il processo di modernizzazione e centralizzazione della Russia sotto Pietro il Grande, con particolare attenzione ai suoi viaggi in Europa, alle riforme interne e alla fondazione di San Pietroburgo.",
+          "filename": "25ST0002"
+        },
+        {
+          "title": "Il Governo Inglese",
+          "description": "Questo macro-argomento analizza il sistema politico inglese tra il XVII e il XVIII secolo, evidenziando il bilanciamento dei poteri tra monarchia e Parlamento, le guerre civili, la Gloriosa Rivoluzione e la nascita della monarchia costituzionale.",
+          "filename": "25ST0003"
+        }
+      ]
     },
     {
-      "title": "Rivoluzione Francese",
-      "description": "Eventi principali della Rivoluzione",
-      "filename": "RivoluzioneFrancese"
+      "chapter": "2",
+      "arguments": [
+        {
+          "title": "Riassunto generale",
+          "description": "Breve riepilogo dei contenuti principali del Capitolo 2.",
+          "filename": "25ST0004"
+        }
+      ]
+    },
+    {
+      "chapter": "Approfondimenti",
+      "arguments": [
+        {
+          "title": "Bill of Rights",
+          "description": "Testo integrale (versione leggibile ed estetica) tratto dalla raccolta dei documenti di storia costituzionale. Il documento sancisce il passaggio alla monarchia parlamentare e definisce i diritti e le libertà dei sudditi.",
+          "filename": "25ST0005"
+        }
+      ]
     }
   ],
-  "Scienze": [
+  "Letteratura": [
     {
-      "title": "Il Sistema Solare",
-      "description": "Pianeti e caratteristiche principali",
-      "filename": "SistemaSolare"
+      "chapter": "1",
+      "arguments": [
+        {
+          "title": "Manierismo",
+          "description": "Pianeti e caratteristiche principali",
+          "filename": "SistemaSolare"
+        }
+      ]
     }
   ]
 }

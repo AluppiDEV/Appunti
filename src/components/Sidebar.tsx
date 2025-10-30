@@ -1,17 +1,29 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FileText, Menu, X } from "lucide-react";
+import { FileText, Folder, Menu, X, Home, BookOpen } from "lucide-react";
+
+type Argument = {
+  title: string;
+  filename: string;
+};
+
+type Chapter = {
+  chapter: string;
+  arguments: Argument[];
+};
+
+type DocsByTopic = Record<string, Chapter[]>;
 
 interface SidebarProps {
-  docs: { title: string; filename: string }[];
+  docsByTopic: DocsByTopic;
 }
 
-export default function Sidebar({ docs }: SidebarProps) {
+export default function Sidebar({ docsByTopic }: SidebarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      {/* Bottone hamburger per mobile - posizionato in alto a sinistra */}
+      {/* Bottone hamburger per mobile */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="md:hidden fixed top-4 left-4 z-50 bg-blue-600 hover:bg-blue-700 text-white p-2.5 rounded-lg shadow-lg transition-colors"
@@ -22,13 +34,10 @@ export default function Sidebar({ docs }: SidebarProps) {
 
       {/* Sidebar principale */}
       <aside
-        className={`
-          fixed top-0 left-0 h-full w-64 bg-gray-900/95 border-r border-gray-800
-          text-gray-200 flex flex-col p-4 backdrop-blur-md shadow-xl
-          transition-transform duration-300 ease-in-out z-40
-          md:translate-x-0
-          ${isOpen ? "translate-x-0" : "-translate-x-full"}
-        `}
+        className={`fixed top-0 left-0 h-full w-72 bg-gray-900/95 border-r border-gray-800
+        text-gray-200 flex flex-col p-4 backdrop-blur-md shadow-xl transition-transform
+        duration-300 ease-in-out z-40 md:translate-x-0
+        ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         {/* Header sidebar */}
         <div className="flex items-center justify-between mb-6">
@@ -36,7 +45,6 @@ export default function Sidebar({ docs }: SidebarProps) {
             <FileText className="w-5 h-5" />
             Documenti
           </h2>
-          {/* Bottone chiudi visibile solo su mobile quando aperta */}
           <button
             onClick={() => setIsOpen(false)}
             className="md:hidden text-gray-400 hover:text-white transition-colors"
@@ -46,28 +54,70 @@ export default function Sidebar({ docs }: SidebarProps) {
           </button>
         </div>
 
-        {/* Lista documenti */}
-        <nav className="flex flex-col gap-2 overflow-y-auto flex-1">
-          {docs.map((doc) => (
-            <NavLink
-              key={doc.filename}
-              to={`/doc/${doc.filename}`}
-              onClick={() => setIsOpen(false)}
-              className={({ isActive }) =>
-                `text-left px-3 py-2.5 rounded-lg transition-all text-sm font-medium ${
-                  isActive
-                    ? "bg-blue-600/30 text-blue-300 border border-blue-600/50 shadow-sm"
-                    : "hover:bg-gray-800/60 text-gray-300 hover:text-white"
-                }`
-              }
-            >
-              {doc.title}
-            </NavLink>
+        {/* Nav principale */}
+        <nav className="flex flex-col gap-4 overflow-y-auto flex-1 pr-1">
+          {/* 🔹 Pulsante Home */}
+          <NavLink
+            to="/"
+            onClick={() => setIsOpen(false)}
+            className={({ isActive }) =>
+              `flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                isActive
+                  ? "bg-blue-600/30 text-blue-300 border border-blue-600/50 shadow-sm"
+                  : "bg-gray-800/40 hover:bg-gray-800/60 text-gray-300 hover:text-white"
+              }`
+            }
+          >
+            <Home size={18} className="text-blue-400" />
+            Torna alla Home
+          </NavLink>
+
+          {/* 🔹 Argomenti e Capitoli */}
+          {Object.entries(docsByTopic).map(([topic, chapters]) => (
+            <div key={topic} className="bg-gray-800/30 rounded-xl p-3">
+              {/* Titolo dell'argomento */}
+              <h3 className="flex items-center gap-2 text-blue-400 font-semibold mb-2 border-b border-gray-700 pb-1">
+                <Folder size={16} />
+                {topic}
+              </h3>
+
+              {/* Capitoli */}
+              {chapters.map((chapter) => (
+                <div key={chapter.chapter} className="mt-3 ml-2">
+                  <div className="flex items-center gap-2 text-sm font-medium text-gray-400 mb-1">
+                    <BookOpen size={14} className="text-blue-300" />
+                    {Number(chapter.chapter)
+                      ? `Capitolo ${chapter.chapter}`
+                      : chapter.chapter}
+                  </div>
+
+                  {/* Documenti del capitolo */}
+                  <div className="flex flex-col pl-5 border-l border-gray-700 space-y-1">
+                    {chapter.arguments.map((doc) => (
+                      <NavLink
+                        key={doc.filename}
+                        to={`/${topic.toLowerCase()}/${doc.filename}`}
+                        onClick={() => setIsOpen(false)}
+                        className={({ isActive }) =>
+                          `block rounded-md px-3 py-1.5 text-sm transition-all ${
+                            isActive
+                              ? "bg-blue-600/30 text-blue-300 border border-blue-600/50 shadow-sm"
+                              : "hover:bg-gray-800/60 text-gray-300 hover:text-white"
+                          }`
+                        }
+                      >
+                        {doc.title}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           ))}
         </nav>
       </aside>
 
-      {/* Overlay per mobile - chiude sidebar al click */}
+      {/* Overlay per mobile */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden z-30"

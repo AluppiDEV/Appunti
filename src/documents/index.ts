@@ -1,2 +1,2 @@
-export * from "./history";
-// export * from "./literature";
+export {default as DocStoria } from "./history/DocStoria";
+export {default as DocLetteratura } from "./literature/DocLetteratura";

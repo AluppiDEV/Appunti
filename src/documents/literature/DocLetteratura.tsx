@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import rawDocs from "../../data/history.json";
+import rawDocs from "../../data/literature.json";
 import { Paragraph } from "../..";
 
 type ParagraphType = {
@@ -9,17 +9,16 @@ type ParagraphType = {
 };
 
 type Doc = {
-  filename: string;
   title: string;
   paragraphs: ParagraphType[];
 };
 
 const docsByTopic: Doc[] = rawDocs as Doc[];
 
-export default function DocStoria() {
+export default function DocLetteratura() {
   const { id } = useParams<{ id: string }>();
   const selectedDoc = docsByTopic.find(
-    (doc) => doc.filename.toUpperCase() === id?.toUpperCase()
+    (doc) => doc.title.toLowerCase() === id?.toLowerCase()
   );
 
   if (!selectedDoc) {
