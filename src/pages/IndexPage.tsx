@@ -32,7 +32,7 @@ export default function IndexPage() {
               {docs.map((doc) => (
                 <Link
                   key={doc.filename}
-                  to={`/doc/${doc.filename}`}
+                  to={`/${topic.toLowerCase()}/${doc.filename}`}
                   className="block rounded-2xl border border-gray-800 bg-gray-900/70 hover:bg-gray-800 transition-all p-6 hover:shadow-lg hover:shadow-blue-900/30"
                 >
                   <h3 className="text-lg font-semibold text-blue-300 mb-2">

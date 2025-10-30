@@ -1,11 +1,28 @@
-{
-  "title": "LuigiXIV",
-  "paragraphs": [
-    {
-      "title": "Regno",
-      "content" [
-        "asdasdasda"
-      ]
-    }
-  ]
-}
+[
+  {
+    "title": "LuigiXIV",
+    "paragraphs": [
+      {
+        "title": "Regno",
+        "contents": ["asdasdasda"]
+      },
+      {
+        "title": "Sbrubs",
+        "contents": ["sucs"]
+      }
+    ]
+  },
+  {
+    "title": "LuigiXIV",
+    "paragraphs": [
+      {
+        "title": "Regno",
+        "contents": ["asdasdasda"]
+      },
+      {
+        "title": "Sbrubs",
+        "contents": ["sucs"]
+      }
+    ]
+  }
+]

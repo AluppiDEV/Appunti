@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Sidebar, IndexPage, DocPage } from "../src";
+import { Sidebar, IndexPage, DocStoria } from "../src";
 
 export default function App() {
   const docs = [
@@ -17,7 +17,7 @@ export default function App() {
         <main className="flex-1 overflow-y-auto p-6 md:ml-64">
           <Routes>
             <Route path="/" element={<IndexPage />} />
-            <Route path="/doc/:id" element={<DocPage />} />
+            <Route path="/storia/:id" element={<DocStoria />} />
           </Routes>
         </main>
       </div>

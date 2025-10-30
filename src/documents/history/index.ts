@@ -1,0 +1,1 @@
+export {default as DocStoria } from "./DocStoria"
