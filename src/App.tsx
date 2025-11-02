@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Sidebar, IndexPage, DocStoria, DocLetteratura } from ".";
+import { Sidebar, IndexPage, DocPage, DocStoria, DocLetteratura } from ".";
 import rawDocs from "./data/files.json";
 
 // ───────────────────────────────
@@ -35,11 +35,14 @@ export default function App() {
             {/* Home con lista documenti */}
             <Route path="/" element={<IndexPage docsByTopic={docsByTopic} />} />
 
+            {/* Pagina documento*/}
+            <Route path="/:topic/:id" element={<DocPage />} />
+
             {/* Pagina documento storia*/}
-            <Route path="/storia/:id" element={<DocStoria />} />
+            {/* <Route path="/storia/:id" element={<DocStoria />} /> */}
 
             {/* Pagina documento letteratura*/}
-            <Route path="/letteratura/:id" element={<DocLetteratura />} />
+            {/* <Route path="/letteratura/:id" element={<DocLetteratura />} /> */}
           </Routes>
         </main>
       </div>
